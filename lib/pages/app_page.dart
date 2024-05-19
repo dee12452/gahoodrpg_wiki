@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gahoodrpg_wiki/pages/classes_page.dart';
 import 'package:gahoodrpg_wiki/pages/home_page.dart';
-import 'package:gahoodrpg_wiki/pages/progression_page.dart';
+import 'package:gahoodrpg_wiki/pages/progression/progression_page.dart';
 
 class AppPage extends StatefulWidget {
   const AppPage({super.key});
