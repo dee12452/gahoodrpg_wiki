@@ -35,8 +35,8 @@ class HomePage extends StatelessWidget {
               height: 25,
             ),
             CarouselSlider(
-              items: ['1', '2', '3', '4', '5', '6']
-                  .map((s) => Image.asset('assets/images/screenshot_$s.png'))
+              items: [1, 2, 3, 4, 5, 6]
+                  .map((s) => Image.asset('assets/images/screenshots/screenshot_$s.png'))
                   .toList(),
               options: CarouselOptions(
                 height: 300,
