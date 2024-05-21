@@ -14,9 +14,7 @@ class BiomeDescription extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset('assets/images/biomes/${e.value}.png'),
-            const SizedBox(
-              height: 5,
-            ),
+            const SizedBox(height: 5),
             Text(
               e.key,
               textAlign: TextAlign.center,
@@ -29,6 +27,7 @@ class BiomeDescription extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
+        const SizedBox(height: 10),
         const Text(
           'Biomes',
           textAlign: TextAlign.center,

@@ -30,13 +30,13 @@ class ProgressionDescription extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 10),
+        const SizedBox(height: 5),
         Text(
           description,
           textAlign: TextAlign.center,
           style: const TextStyle(fontSize: 14, color: Colors.white70),
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 5),
       ],
     );
   }
