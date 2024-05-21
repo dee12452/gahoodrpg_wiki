@@ -78,22 +78,6 @@ class _AppPageState extends State<AppPage> {
                 select(2);
               },
             ),
-            ListTile(
-              title: const Text('Items + Blocks'),
-              selected: selectedIndex == 3,
-              onTap: () {
-                Navigator.pop(context);
-                select(3);
-              },
-            ),
-            ListTile(
-              title: const Text('Mobs'),
-              selected: selectedIndex == 4,
-              onTap: () {
-                Navigator.pop(context);
-                select(4);
-              },
-            ),
           ],
         ),
       ),

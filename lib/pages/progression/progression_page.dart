@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gahoodrpg_wiki/pages/progression/getting_started.dart';
 import 'package:gahoodrpg_wiki/pages/progression/tier1_progression.dart';
 import 'package:gahoodrpg_wiki/pages/progression/tier2_progression.dart';
+import 'package:gahoodrpg_wiki/pages/progression/tier3_progression.dart';
 
 class ProgressionPage extends StatelessWidget {
   const ProgressionPage({super.key});
@@ -11,11 +12,11 @@ class ProgressionPage extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(20),
       child: ListView(
-        children: [
-          const SizedBox(
+        children: const [
+          SizedBox(
             height: 10,
           ),
-          const Center(
+          Center(
             child: Text(
               'Progression',
               style: TextStyle(
@@ -24,10 +25,10 @@ class ProgressionPage extends StatelessWidget {
                   color: Colors.white70),
             ),
           ),
-          const SizedBox(
+          SizedBox(
             height: 10,
           ),
-          const Center(
+          Center(
             child: Text(
               'Disclaimer',
               style: TextStyle(
@@ -36,7 +37,7 @@ class ProgressionPage extends StatelessWidget {
                   color: Colors.white70),
             ),
           ),
-          const Center(
+          Center(
             child: Padding(
               padding: EdgeInsets.only(left: 100, right: 100),
               child: Text(
@@ -48,12 +49,14 @@ class ProgressionPage extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 10),
-          const GettingStarted(),
-          const SizedBox(height: 10),
-          const Tier1Progression(),
-          const SizedBox(height: 10),
-          const Tier2Progression(),
+          SizedBox(height: 10),
+          GettingStarted(),
+          SizedBox(height: 10),
+          Tier1Progression(),
+          SizedBox(height: 10),
+          Tier2Progression(),
+          SizedBox(height: 10),
+          Tier3Progression(),
         ],
       ),
     );

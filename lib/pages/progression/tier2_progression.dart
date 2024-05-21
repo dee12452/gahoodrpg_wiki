@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gahoodrpg_wiki/pages/progression/biome_description.dart';
+import 'package:gahoodrpg_wiki/pages/progression/bordered_item.dart';
+import 'package:gahoodrpg_wiki/pages/progression/boss_description.dart';
+import 'package:gahoodrpg_wiki/pages/progression/materials_description.dart';
+import 'package:gahoodrpg_wiki/pages/progression/mob_description.dart';
 import 'package:gahoodrpg_wiki/pages/progression/progression_description.dart';
 
 class Tier2Progression extends StatelessWidget {
@@ -7,8 +11,8 @@ class Tier2Progression extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ExpansionTile(
-      title: const Row(
+    return const ExpansionTile(
+      title: Row(
         children: [
           SizedBox(
             width: 10,
@@ -26,57 +30,64 @@ class Tier2Progression extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const BiomeDescription(
-              biomes: {
-                'Desert': 'desert',
-                'Badlands': 'badlands',
-                'Savanna': 'savanna',
-              },
+            BorderedItem(
+              child: BiomeDescription(
+                biomes: {
+                  'Desert': 'desert',
+                  'Badlands': 'badlands',
+                  'Savanna': 'savanna',
+                },
+              ),
             ),
-            const ProgressionDescription(
-              description:
-                  'After tier 1, you\'ll head into the dry part of your world.'
-                  ' The process will be the same as before, find materi.'
-                  ' Try to find copper, gold, and diamonds. Typical vanilla progression.',
+            BorderedItem(
+              child: Column(
+                children: [
+                  ProgressionTitle(title: 'Recommended Class Level'),
+                  ProgressionDescription(description: '3')
+                ],
+              ),
             ),
-            const ProgressionDescription(
-              description:
-                  'From here, you can start your way through GahoodRPG!'
-                  ' You can select your class using the Mastery Book given to you when you load into the world.'
-                  ' You can also access this book at any time using the key assigned to opening the book, (N) by default'
-                  ' Find a class that looks interesting to you, and hit the select button.'
-                  ' You can level up early game by fighting monsters to unlock your first skill.',
+            BorderedItem(
+              child: Column(
+                children: [
+                  ProgressionTitle(title: 'Recommended Gear'),
+                  ProgressionDescription(description: '- Bronze Armor'),
+                  ProgressionDescription(description: '- Silver Armor'),
+                  ProgressionDescription(description: '- Amethyst Armor'),
+                  ProgressionDescription(description: '- Bronze Weapon'),
+                  ProgressionDescription(description: '- Silver Weapon'),
+                  ProgressionDescription(description: '- Amethyst Weapon'),
+                  SizedBox(height: 5),
+                ],
+              ),
             ),
-            const ProgressionDescription(
-              description: 'From here you\'ll want to make a Forging Furnace.'
-                  ' The Forging Furnace will allow you to make ingredients to powerful armor, weapons, and trinkets.',
+            MobsDescription(
+                mobs: [
+                  MobInfo('Scorpion', 'scorpion', true),
+                  MobInfo('Cave Scorpion', 'cave_scorpion', true),
+                  MobInfo('Sphinx', 'sphinx', true),
+                  MobInfo('Desert Creeper', 'desert_creeper', true),
+                  MobInfo('Archeologist', 'archeologist', false),
+                  MobInfo('Crazed Archeologist', 'crazed_archeologist', true),
+                ]
             ),
-            const ProgressionDescription(
-              description:
-                  'Now you can start working towards your tier 1 armor.'
-                  ' You\'ll want to either get Bronze for more defense, Amethyst for more offense, or Silver for an all-around build.',
+            MaterialsDescription(
+                mats: [
+                  MaterialInfo('Red Saguaro', 'red_saguaro', 'Found by cutting down Red Saguaro cacti with a tier 1 axe (bronze, silver, or amethyst) or better.'),
+                  MaterialInfo('Emberstone', 'emberstone', 'Found by mining emberstone ore underground, or beating horde spawners.'),
+                  MaterialInfo('Sunfire Dust', 'sunfire_dust', 'Found by mining sunfire ore underground, or by Crazed Archeologists and Cave Scorpions.'),
+                  MaterialInfo('Carnelian', 'carnelian', 'Found by mining carnelian ore underground, or dropped by Crazed Archeologists and Cave Scorpions.'),
+                  MaterialInfo('Platinum', 'platinum_ingot', 'Found by mining platinum ore underground.'),
+                  MaterialInfo('Phoenixite', 'phoenixite', 'Trade with Archeologists.'),
+                  MaterialInfo('Desert Steel', 'desert_steel_ingot', 'Forging Furnace recipe.'),
+                  MaterialInfo('Auridium', 'auridium_ingot', 'Forging Furnace recipe.'),
+                  MaterialInfo('Desert Gunpowder', 'desert_gunpowder', 'Dropped by Desert Creepers.'),
+                  MaterialInfo('Ancient Brick', 'ancient_brick', 'Dropped by Sphinxes.'),
+                  MaterialInfo('Scorpion Venom', 'scorpion_venom', 'Dropped by Scorpions.'),
+                  MaterialInfo('Pyramid Stone', 'pyramid_stone', 'Dropped by The Pharaoh.'),
+                ]
             ),
-            const ProgressionDescription(
-              description: 'Now create the Armor Crafting Station.'
-                  ' Once you have enough materials, you should start working on tier 1 armor.'
-                  ' You need to make upgrades to go along with your armror, so decide if you want a power, magic, or balanced build.',
-            ),
-            const ProgressionDescription(
-              description:
-                  'Once you have at least one piece of tier 1 armor, you\'ll want to start taking on hordes.'
-                  ' Hordes will spawn all over the tier 1 biomes in easy (green), medium (yellow), or red (hard).'
-                  ' The higher the difficulty, the better the rewards, which will allow you to craft more armor pieces.',
-            ),
-            const ProgressionDescription(
-              description:
-                  'With at least 2 pieces of tier 1 armor and a diamond weapon for your class, you may be ready to take on the boss.'
-                  ' You will need to find a boss spawner undergound, and provide it with a Seed of Rage to spawn the boss.',
-            ),
-            const ProgressionDescription(
-              description:
-                  'The boss will drop Rage Essence, which you can use to make your tier 1 weapon.'
-                  ' Make a Weapon Crafting Station, an upgrade, and craft your tier 1 weapon to progress to tier 2.',
-            ),
+            BossDescription(bossName: 'The Pharaoh', image: 'the_pharaoh'),
           ],
         ),
       ],

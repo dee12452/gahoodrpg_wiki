@@ -65,9 +65,9 @@ flutter:
     - assets/images/classes/
     - assets/images/biomes/
     - assets/images/screenshots/
-    - assets/images/blocks/
     - assets/images/items/
     - assets/images/mobs/
+    - assets/images/spells/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

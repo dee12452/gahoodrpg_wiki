@@ -43,6 +43,7 @@ class ClassesPage extends StatelessWidget {
                 descriptions: const [
                   'Every third attack will do additional damage.'
                 ],
+                spellAnimation: 'sword_barrage',
               ),
               _SpellDescription(
                 spellImage:
@@ -54,6 +55,7 @@ class ClassesPage extends StatelessWidget {
                   'The longer it is held, the larger and more powerful the attack.',
                   'The player cannot move when charging.',
                 ],
+                spellAnimation: 'power_slash',
               ),
               _SpellDescription(
                 spellImage: Image.asset('assets/images/classes/war_cry.png'),
@@ -63,6 +65,7 @@ class ClassesPage extends StatelessWidget {
                   'Unleash a mighty roar that renders foes unable to damage you.',
                   'Affected foes will also take more damage from you.',
                 ],
+                spellAnimation: 'war_cry',
               ),
               _SpellDescription(
                 spellImage:
@@ -73,6 +76,7 @@ class ClassesPage extends StatelessWidget {
                   'Summon your sword in front of you and perform a dash.',
                   'Deals damage to enemies nearby.',
                 ],
+                spellAnimation: 'blade_dance',
               ),
               _SpellDescription(
                 spellImage:
@@ -84,6 +88,7 @@ class ClassesPage extends StatelessWidget {
                   'Once the ground or a fluid has been hit, slam down to deal damage and knockback to nearby enemies.',
                   'The player cannot cast other spells while this spell is active.',
                 ],
+                spellAnimation: 'blade_crash',
               ),
             ],
           ),
@@ -106,6 +111,7 @@ class ClassesPage extends StatelessWidget {
                 descriptions: const [
                   'Summons a friendly wolf to fight by your side at all times.'
                 ],
+                spellAnimation: 'wolf_pack',
               ),
               _SpellDescription(
                 spellImage:
@@ -115,6 +121,7 @@ class ClassesPage extends StatelessWidget {
                 descriptions: const [
                   'Launch a barrage of arrows to fall at a location.',
                 ],
+                spellAnimation: 'raining_arrows',
               ),
               _SpellDescription(
                 spellImage:
@@ -124,6 +131,7 @@ class ClassesPage extends StatelessWidget {
                 descriptions: const [
                   'Every third arrow hit will explode on hit, dealing additional damage.',
                 ],
+                spellAnimation: 'exploding_arrows',
               ),
               _SpellDescription(
                 spellImage:
@@ -134,6 +142,7 @@ class ClassesPage extends StatelessWidget {
                   'Send out a thorny vine at your enemies.',
                   'Hit enemies will be rooted in place for a short period of time.',
                 ],
+                spellAnimation: 'rooting_vine',
               ),
               _SpellDescription(
                 spellImage:
@@ -144,6 +153,7 @@ class ClassesPage extends StatelessWidget {
                   'You influence your wolf to have a poisonous bite for a brief period of time.',
                   'Bitten foes will receive poison damage for a brief period of time.',
                 ],
+                spellAnimation: 'call_of_the_wild',
               ),
             ],
           ),
@@ -168,6 +178,7 @@ class ClassesPage extends StatelessWidget {
                 descriptions: const [
                   'Jumping again while in mid air will teleport the mage forward in space.'
                 ],
+                spellAnimation: 'portal_jump',
               ),
               _SpellDescription(
                 spellImage: Image.asset('assets/images/classes/fireball.png'),
@@ -176,6 +187,7 @@ class ClassesPage extends StatelessWidget {
                 descriptions: const [
                   'Launch a devastating fireball through the air.',
                 ],
+                spellAnimation: 'fireball',
               ),
               _SpellDescription(
                 spellImage:
@@ -186,6 +198,7 @@ class ClassesPage extends StatelessWidget {
                   'Cast down a powerful lightning bolt onto your place of choice.',
                   'Damages nearby enemies.',
                 ],
+                spellAnimation: 'lightning_bolt',
               ),
               _SpellDescription(
                 spellImage: Image.asset('assets/images/classes/frost_beam.png'),
@@ -195,6 +208,7 @@ class ClassesPage extends StatelessWidget {
                   'Press and hold this spell to unleash a ray of cold onto your enemies.',
                   'Hit enemies will receive a slow debuff.',
                 ],
+                spellAnimation: 'frost_beam',
               ),
               _SpellDescription(
                 spellImage: Image.asset('assets/images/classes/meteor.png'),
@@ -204,6 +218,7 @@ class ClassesPage extends StatelessWidget {
                   'Spawn a meteor at your desired location.',
                   'Deals massive damage and knockback to nearby enemies.',
                 ],
+                spellAnimation: 'meteor',
               ),
             ],
           ),
@@ -228,6 +243,7 @@ class ClassesPage extends StatelessWidget {
                 descriptions: const [
                   'Every so often your resolve allows you to block any attack that comes your way.'
                 ],
+                spellAnimation: 'divine_guard',
               ),
               _SpellDescription(
                 spellImage:
@@ -238,6 +254,7 @@ class ClassesPage extends StatelessWidget {
                   'Throw your shield out at your enemies.',
                   'Your cooldown is refreshed if you hit an enemy.',
                 ],
+                spellAnimation: 'shield_throw',
               ),
               _SpellDescription(
                 spellImage:
@@ -247,6 +264,7 @@ class ClassesPage extends StatelessWidget {
                 descriptions: const [
                   'Blocking an attack will deal thorn damage back to an enemy.',
                 ],
+                spellAnimation: 'thorn_shield',
               ),
               _SpellDescription(
                 spellImage:
@@ -257,6 +275,7 @@ class ClassesPage extends StatelessWidget {
                   'A powerful charge that sends the player forward.',
                   'Deals damage and knockback to enemies nearby.',
                 ],
+                spellAnimation: 'valiant_charge',
               ),
               _SpellDescription(
                 spellImage:
@@ -268,6 +287,7 @@ class ClassesPage extends StatelessWidget {
                   'Once the shields fall, enemies nearby take massive damage and knockback.',
                   'These spawned shields can also block enemy projectiles.',
                 ],
+                spellAnimation: 'crash_guard',
               ),
             ],
           ),
@@ -311,6 +331,7 @@ class _SpellDescription extends StatelessWidget {
   final String spellName;
   final bool passive;
   final List<String> descriptions;
+  final String? spellAnimation;
 
   const _SpellDescription({
     super.key,
@@ -318,10 +339,19 @@ class _SpellDescription extends StatelessWidget {
     required this.spellName,
     required this.passive,
     required this.descriptions,
+    this.spellAnimation,
   });
 
   @override
   Widget build(BuildContext context) {
+    final spellAnimImage = SizedBox(
+      width: 500,
+      height: 300,
+      child: FittedBox(
+        fit: BoxFit.fill,
+        child: Image.asset('assets/images/spells/$spellAnimation.gif'),
+      ),
+    );
     return Padding(
       padding: const EdgeInsets.all(15),
       child: ExpansionTile(
@@ -342,12 +372,15 @@ class _SpellDescription extends StatelessWidget {
           ],
         ),
         children: [
+          const SizedBox(height: 5,),
           Text(
             passive ? 'Passive ability.' : 'Active ability.',
             style: const TextStyle(fontSize: 14, color: Colors.white70),
           ),
           ...descriptions.map((e) => Text(e,
-              style: const TextStyle(fontSize: 14, color: Colors.white70)))
+              style: const TextStyle(fontSize: 14, color: Colors.white70))),
+          spellAnimation != null ? spellAnimImage : Container(),
+          const SizedBox(height: 5,),
         ],
       ),
     );

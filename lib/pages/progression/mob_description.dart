@@ -2,21 +2,37 @@ import 'package:flutter/widgets.dart';
 import 'package:gahoodrpg_wiki/pages/progression/bordered_item.dart';
 import 'package:gahoodrpg_wiki/pages/progression/progression_description.dart';
 
+class MobInfo {
+  final String name;
+  final String image;
+  final bool aggressive;
+
+  const MobInfo(this.name, this.image, this.aggressive);
+}
+
 class MobsDescription extends StatelessWidget {
-  final Map<String, String> mobs;
+  final List<MobInfo> mobs;
 
   const MobsDescription({super.key, required this.mobs});
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> mobGridItems = mobs.entries.map((e) {
+    final List<Widget> mobGridItems = mobs.map((e) {
       return Column(
         children: [
           Padding(
             padding: const EdgeInsets.all(25),
-            child: Image.asset('assets/images/mobs/${e.value}.png'),
+            child: SizedBox(
+              width: 500,
+              height: 300,
+              child: FittedBox(
+                fit: BoxFit.fill,
+                child: Image.asset('assets/images/mobs/${e.image}.png'),
+              ),
+            ),
           ),
-          ProgressionDescription(description: e.key),
+          ProgressionDescription(description: e.name),
+          ProgressionDescription(description: e.aggressive ? 'Aggressive' : 'Neutral'),
         ],
       );
     }).toList();
@@ -25,7 +41,7 @@ class MobsDescription extends StatelessWidget {
       children: [
         const ProgressionTitle(title: 'Mobs'),
         GridView.count(
-          crossAxisCount: 2,
+          crossAxisCount: (MediaQuery.of(context).size.width / 500).floor(),
           shrinkWrap: true,
           children: mobGridItems,
         ),
