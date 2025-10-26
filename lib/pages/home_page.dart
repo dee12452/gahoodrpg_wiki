@@ -1,10 +1,9 @@
-import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide CarouselController;
 
 class HomePage extends StatelessWidget {
-  final CarouselController carouselController = CarouselController();
+  final CarouselSliderController carouselController =
+      CarouselSliderController();
 
   HomePage({super.key});
 
@@ -36,7 +35,8 @@ class HomePage extends StatelessWidget {
             ),
             CarouselSlider(
               items: [1, 2, 3, 4, 5, 6]
-                  .map((s) => Image.asset('assets/images/screenshots/screenshot_$s.png'))
+                  .map((s) => Image.asset(
+                      'assets/images/screenshots/screenshot_$s.png'))
                   .toList(),
               options: CarouselOptions(
                 height: 300,
@@ -83,8 +83,8 @@ class HomePage extends StatelessWidget {
               margin: const EdgeInsets.only(left: 15, right: 15),
               child: const Text(
                 'It is inspired by games like Terraria'
-                    ', MMORPGs such as Guild Wars 2, and other mods such as DivineRPG '
-                    'and Iron\'s Spells \'n Spellbooks.',
+                ', MMORPGs such as Guild Wars 2, and other mods such as DivineRPG '
+                'and Iron\'s Spells \'n Spellbooks.',
                 style: TextStyle(fontSize: 14, color: Colors.white70),
                 textAlign: TextAlign.center,
               ),
